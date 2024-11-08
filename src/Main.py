@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 import customtkinter as ctk
 
@@ -33,7 +34,12 @@ class BudgetTrackerApp:
         self.root.title("Budget Tracker")
         self.root.geometry("1000x600")
 
-        self.root.iconbitmap("Icon.ico")
+        icon_path = os.path.join(os.path.dirname(__file__), "utils", "Icon.ico")
+        try:
+            self.root.iconbitmap(icon_path)
+        except Exception as e:
+            print(f"Failed to load icon: {e}")
+        # self.root.iconbitmap(icon_path)
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("dark-blue")
 
